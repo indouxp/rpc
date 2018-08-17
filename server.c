@@ -17,7 +17,14 @@ void main()
 bool_t   xdr_rls();
 char     *do_rls();
 
-  registerrpc(RLS_PROG,RLS_VER,RLS_PROC,do_rls,xdr_rls,xdr_rls);
+  // サービス登録
+  // 1:プログラム番号
+  // 2:バージョン番号
+  // 3:関数番号
+  // 4:do_rls  リクエスト時に呼ばれる関数
+  // 5:xdr_rls アーキテクチャーの異なるマシン間でもデータをやり取りするためにxdrライブラリを使用
+  registerrpc(RLS_PROG, RLS_VER, RLS_PROC, do_rls, xdr_rls, xdr_rls);
+  // リクエスト待ち 
   svc_run();
 }
 
